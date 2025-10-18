@@ -6,125 +6,94 @@
   <title>Jun Logistics</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
       margin: 0;
       padding: 0;
-      background-color: #f4f8fb;
-      color: #333;
     }
 
     header {
       text-align: center;
-      background: linear-gradient(135deg, #004aad, #f5d76e);
+      padding: 60px 20px 20px 20px;
+      background: linear-gradient(120deg, #004aad, #007bff);
       color: white;
-      padding: 60px 20px;
-    }
-
-    header img.logo {
-      width: 140px;
-      height: 140px;
-      object-fit: contain;
-      border-radius: 20px;
-      background: white;
-      padding: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
     }
 
     header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
+      font-size: 2em;
+      margin-bottom: 5px;
     }
 
     header p {
-      font-size: 1.2em;
-      margin-top: 0;
-    }
-
-    section {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    section:nth-child(even) {
-      background-color: #eaf1f8;
-    }
-
-    h2 {
-      color: #003580;
-      margin-bottom: 20px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
       font-size: 1.1em;
-      line-height: 1.8;
+      opacity: 0.9;
     }
 
-    .contact {
-      background: #004aad;
-      color: white;
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
 
     footer {
-      background-color: #222;
-      color: #ddd;
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
+      padding: 15px;
+      background: #004aad;
+      color: white;
+      margin-top: 40px;
     }
 
-    a.button {
-      display: inline-block;
-      background: #f5d76e;
-      color: #003580;
-      text-decoration: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
+    /* 🔹 Logo nhỏ góc trái trên */
+    .corner-logo {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      width: 40px;      /* 👉 nhỏ hơn trước */
+      height: 40px;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 0 6px rgba(0,0,0,0.15);
+      padding: 4px;
+      z-index: 1000;
+      transition: transform 0.2s ease-in-out;
     }
 
-    a.button:hover {
-      background: #ffe77a;
-      transform: scale(1.05);
+    /* Hiệu ứng khi rê chuột vào logo */
+    .corner-logo:hover {
+      transform: scale(1.15);
     }
   </style>
 </head>
 <body>
+
+  <!-- 🔹 Logo nhỏ góc trái -->
+  <img src="logo.png" alt="Jun Logistics Logo" class="corner-logo">
+
   <header>
-    <!-- logo cần đặt cùng thư mục với index.html -->
-    <img src="logo.png" alt="Jun Logistics Logo" class="logo">
     <h1>Jun Logistics</h1>
     <p>Chuyên nghiệp – Hiệu quả – Tin cậy</p>
   </header>
 
-  <section>
-    <h2>Giới thiệu</h2>
-    <p>Jun Logistics là đại lý môi giới logistics cung cấp giải pháp vận chuyển, khai báo hải quan và quản lý chuỗi cung ứng toàn diện. Với đội ngũ chuyên gia giàu kinh nghiệm, chúng tôi cam kết tối ưu chi phí và thời gian cho khách hàng.</p>
-  </section>
+  <div class="content">
+    <h2>Về chúng tôi</h2>
+    <p>Jun Logistics là đơn vị chuyên cung cấp dịch vụ vận tải và logistics toàn diện, 
+       giúp khách hàng tối ưu chi phí và thời gian giao nhận.</p>
 
-  <section>
-    <h2>Dịch vụ của chúng tôi</h2>
+    <h3>Dịch vụ chính</h3>
     <ul>
-      <li>🚛 Vận tải nội địa và quốc tế</li>
-      <li>🧾 Khai báo hải quan</li>
-      <li>🚢 Đại lý giao nhận hàng hóa</li>
-      <li>🏭 Quản lý kho bãi và logistics toàn diện</li>
+      <li>Vận chuyển nội địa & quốc tế</li>
+      <li>Khai báo hải quan</li>
+      <li>Dịch vụ kho bãi</li>
+      <li>Hỗ trợ xuất nhập khẩu</li>
     </ul>
-    <a href="#" class="button">Liên hệ tư vấn</a>
-  </section>
-
-  <section class="contact">
-    <h2>Liên hệ</h2>
-    <p>Email: <b>info@junlogistics.com</b></p>
-    <p>Hotline: <b>0909 999 888</b></p>
-    <p>Địa chỉ: 123 Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh</p>
-  </section>
+  </div>
 
   <footer>
-    <p>© 2025 Jun Logistics. All rights reserved.</p>
+    © 2025 Jun Logistics. All rights reserved.
   </footer>
+
 </body>
 </html>
