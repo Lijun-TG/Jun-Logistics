@@ -13,20 +13,34 @@
     }
 
     header {
+      position: relative;
       text-align: center;
       padding: 60px 20px 20px 20px;
       background: linear-gradient(120deg, #004aad, #007bff);
       color: white;
+      overflow: hidden;
+    }
+
+    /* 🔹 Logo góc trái, hoà vào nền */
+    header img.logo {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      width: 60px; /* chỉnh nhỏ hơn hoặc lớn hơn tại đây */
+      height: auto;
+      border: none;
+      box-shadow: none;
+      background: transparent;
     }
 
     header h1 {
-      font-size: 2em;
+      font-size: 2.2em;
       margin-bottom: 5px;
     }
 
     header p {
       font-size: 1.1em;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .content {
@@ -45,41 +59,21 @@
       color: white;
       margin-top: 40px;
     }
-
-    /* 🔹 Logo nhỏ góc trái trên */
-    .corner-logo {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      width: 40px;      /* 👉 nhỏ hơn trước */
-      height: 40px;
-      border-radius: 8px;
-      background: white;
-      box-shadow: 0 0 6px rgba(0,0,0,0.15);
-      padding: 4px;
-      z-index: 1000;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    /* Hiệu ứng khi rê chuột vào logo */
-    .corner-logo:hover {
-      transform: scale(1.15);
-    }
   </style>
 </head>
 <body>
 
-  <!-- 🔹 Logo nhỏ góc trái -->
-  <img src="logo.png" alt="Jun Logistics Logo" class="corner-logo">
-
   <header>
+    <!-- 🔹 Logo hòa nền -->
+    <img src="logo.png" alt="Jun Logistics Logo" class="logo">
+
     <h1>Jun Logistics</h1>
     <p>Chuyên nghiệp – Hiệu quả – Tin cậy</p>
   </header>
 
   <div class="content">
     <h2>Về chúng tôi</h2>
-    <p>Jun Logistics là đơn vị chuyên cung cấp dịch vụ vận tải và logistics toàn diện, 
+    <p>Jun Logistics là đơn vị chuyên cung cấp dịch vụ vận tải và logistics toàn diện,
        giúp khách hàng tối ưu chi phí và thời gian giao nhận.</p>
 
     <h3>Dịch vụ chính</h3>
