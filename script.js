@@ -10,9 +10,6 @@ setInterval(()=>{ index=(index+1)%slideCount; showSlide(index); },5000);
 // Fade-in khi cuộn
 const fadeElements = document.querySelectorAll('.fade-in');
 const observer = new IntersectionObserver((entries, obs)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-  });
-}, { threshold:0.2 });
+entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }});
+},{threshold:0.2});
 fadeElements.forEach(el=>observer.observe(el));
-
