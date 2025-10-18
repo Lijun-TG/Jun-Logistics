@@ -1,178 +1,234 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun Logistics - Đại lý môi giới Logistics chuyên nghiệp</title>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jun Logistics - Đại lý môi giới Logistics chuyên nghiệp</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+html { scroll-behavior: smooth; }
+body { margin:0; padding:0; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#f4f6f8; color:#333; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fb;
-      color: #333;
-    }
+/* SLIDER CHÍNH */
+header { position: relative; }
+.slider { position: relative; overflow: hidden; height:450px; }
+.slides { display:flex; width:300%; transition: transform 1s ease-in-out; }
+.slide {
+  width:100%; flex-shrink:0; position:relative; background-size:cover; background-position:center;
+  color:white; display:flex; align-items:center; justify-content:center; transition: transform 0.5s, box-shadow 0.5s;
+}
+.slide::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); }
+.slide:hover { transform: scale(1.02); box-shadow:0 20px 40px rgba(0,0,0,0.4); }
 
-    /* Header */
-    header {
-      background: linear-gradient(90deg, #0055a5, #00a8cc);
-      color: white;
-      padding: 10px 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+.slide-text {
+  position: relative; z-index:1; background: rgba(0,0,0,0.3);
+  padding:20px 30px; border-radius:10px; text-align:center; transition: all 0.5s ease; will-change: transform;
+}
+.slider .slide:hover .slide-text {
+  background: rgba(0,0,0,0.5);
+  color: #fff9a6;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+}
 
-    header img {
-      height: 80px;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
+/* NAV */
+nav { background:#2b1f72; padding:10px; text-align:center; position:sticky; top:0; z-index:999; }
+nav a { color:white; margin:0 15px; text-decoration:none; font-weight:500; transition: all 0.3s ease, text-shadow 0.3s ease; }
+nav a:hover { color:#ffcc00; text-shadow: 0 0 8px rgba(255,204,0,0.8); }
 
-    nav {
-      background: #003e7e;
-      padding: 10px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+/* SECTIONS */
+section { padding:80px 20px; max-width:1000px; margin:auto; margin-top:40px; border-radius:10px; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+h2 { color:#3c2f8c; border-left:5px solid #ffcc00; padding-left:10px; margin-bottom:20px; }
+.button {
+  background:#3c2f8c; color:white; padding:12px 25px; text-decoration:none; border-radius:5px;
+  display:inline-block; margin-top:10px; transition: all 0.3s ease; position:relative;
+}
+.button:hover { transform: translateY(-3px); box-shadow:0 8px 20px rgba(0,0,0,0.4); background:#6655cc; }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+/* FADE-IN */
+.fade-in { opacity:0; transform:translateY(20px); transition:opacity 1s ease-out, transform 1s ease-out; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
 
-    nav a:hover {
-      color: #ffcc00;
-    }
+/* PARALLAX SECTION */
+.parallax { background-attachment: fixed; background-size: cover; background-position:center; color:white; text-align:center; padding:100px 20px; border-radius:10px; margin-top:40px; }
 
-    section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+/* SERVICE CARDS */
+.services-container { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.service-card {
+  background:white; padding:20px; border-radius:10px; width:250px; text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  will-change: transform;
+}
+.service-card i { font-size:40px; color:#3c2f8c; margin-bottom:10px; }
+.fade-in-hover { opacity:0; transform: scale(0.95) translateY(20px); transition: opacity 1s ease-out, transform 0.6s ease-out, box-shadow 0.3s, background 0.3s; }
+.fade-in-hover.visible { opacity:1; transform: scale(1) translateY(0); }
+.service-card.fade-in-hover:hover { transform: scale(1.05) translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.25); background: rgba(255,255,255,0.95); }
 
-    h2 {
-      color: #0055a5;
-      border-left: 5px solid #ffcc00;
-      padding-left: 10px;
-    }
+/* SERVICE SLIDER */
+.services-slider { position: relative; overflow:hidden; margin-top:20px; }
+.slider-track { display:flex; gap:20px; transition: transform 0.5s ease-in-out; }
+.slider-btn { position:absolute; top:50%; transform: translateY(-50%); background: rgba(0,0,0,0.3); border:none; color:white; font-size:2rem; padding:10px; cursor:pointer; border-radius:50%; z-index:10; }
+.slider-btn:hover { background: rgba(0,0,0,0.6); }
+.prev { left:10px; } .next { right:10px; }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #003e7e;
-      color: white;
-      margin-top: 30px;
-    }
+/* FOOTER */
+footer { text-align:center; padding:20px; background:#2b1f72; color:white; margin-top:30px; }
+footer a { color:white; transition: all 0.3s ease, text-shadow 0.3s ease; }
+footer a:hover { color:#ffcc00; text-shadow:0 0 8px rgba(255,204,0,0.8); }
 
-    .button {
-      background: #0055a5;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 10px;
-      transition: 0.3s;
-    }
-
-    .button:hover {
-      background: #007acc;
-    }
-
-    /* Hiệu ứng hiện dần */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:768px){ .service-card { width:200px; } .slide h2 { font-size:1.5rem; } .slide p { font-size:1rem; } }
+</style>
 </head>
-
 <body>
-  <header>
-    <img src="logo.png" alt="Jun Logistics Logo">
-    <h1>Jun Logistics</h1>
-    <p>Đại lý môi giới Logistics chuyên nghiệp - Kết nối toàn cầu, phục vụ tận tâm</p>
-  </header>
+
+<header>
+  <div class="slider">
+    <div class="slides">
+      <div class="slide" style="background-image:url('slide1.jpg');">
+        <div class="slide-text">
+          <h2>Vận chuyển quốc tế nhanh chóng</h2>
+          <p>Đảm bảo an toàn, thời gian chính xác</p>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('slide2.jpg');">
+        <div class="slide-text">
+          <h2>Giao nhận nội địa tiện lợi</h2>
+          <p>Dịch vụ tận nơi, linh hoạt và chuyên nghiệp</p>
+        </div>
+      </div>
+      <div class="slide" style="background-image:url('slide3.jpg');">
+        <div class="slide-text">
+          <h2>Khai báo hải quan nhanh gọn</h2>
+          <p>Hỗ trợ chứng từ và thủ tục xuất nhập khẩu</p>
+        </div>
+      </div>
+    </div>
+    <button class="slider-btn prev">&#10094;</button>
+    <button class="slider-btn next">&#10095;</button>
+  </div>
 
   <nav>
     <a href="#home">Trang chủ</a>
     <a href="#services">Dịch vụ</a>
-    <a href="#pricing">Báo giá</a>
+    <a href="#about">Giới thiệu</a>
     <a href="#contact">Liên hệ</a>
   </nav>
+</header>
 
-  <section id="home" class="fade-in">
-    <h2>Chào mừng đến với Jun Logistics</h2>
-    <p>Chúng tôi là đại lý logistics chuyên nghiệp cung cấp dịch vụ vận chuyển hàng hóa, khai báo hải quan, giao nhận nội địa và quốc tế với chất lượng hàng đầu.</p>
-    <a class="button" href="#contact">Liên hệ ngay</a>
-  </section>
+<section id="home" class="fade-in parallax" style="background-image:url('parallax1.jpg');">
+  <h2>Chào mừng đến Jun Logistics</h2>
+  <p>Chúng tôi cung cấp dịch vụ vận chuyển hàng hóa quốc tế, nội địa, khai báo hải quan với đội ngũ chuyên nghiệp và tận tâm.</p>
+  <a class="button" href="#contact">Liên hệ ngay</a>
+</section>
 
-  <section id="services" class="fade-in">
-    <h2>Dịch vụ của chúng tôi</h2>
-    <ul>
-      <li>🚢 Vận chuyển quốc tế (đường biển, đường hàng không)</li>
-      <li>🚛 Giao nhận nội địa và kho bãi</li>
-      <li>📄 Khai báo hải quan và tư vấn chứng từ</li>
-      <li>🌏 Dịch vụ logistics trọn gói, tối ưu chi phí</li>
-    </ul>
-  </section>
+<section id="services" class="fade-in">
+  <h2>Dịch vụ của chúng tôi</h2>
+  <div class="services-slider">
+    <button class="slider-btn prev">&#10094;</button>
+    <div class="slider-track">
+      <div class="service-card fade-in-hover">
+        <i class="fas fa-ship"></i>
+        <h3>Vận chuyển đường biển</h3>
+        <p>An toàn và giá cạnh tranh</p>
+      </div>
+      <div class="service-card fade-in-hover">
+        <i class="fas fa-plane"></i>
+        <h3>Vận chuyển đường hàng không</h3>
+        <p>Nhanh chóng, đảm bảo thời gian</p>
+      </div>
+      <div class="service-card fade-in-hover">
+        <i class="fas fa-truck"></i>
+        <h3>Giao nhận nội địa</h3>
+        <p>Hỗ trợ kho bãi, giao nhận tận nơi</p>
+      </div>
+      <div class="service-card fade-in-hover">
+        <i class="fas fa-file-invoice"></i>
+        <h3>Khai báo hải quan</h3>
+        <p>Tư vấn chứng từ và thủ tục</p>
+      </div>
+      <div class="service-card fade-in-hover">
+        <i class="fas fa-globe"></i>
+        <h3>Logistics tích hợp</h3>
+        <p>Quản lý chuỗi cung ứng tối ưu chi phí</p>
+      </div>
+    </div>
+    <button class="slider-btn next">&#10095;</button>
+  </div>
+</section>
 
-  <section id="pricing" class="fade-in">
-    <h2>Báo giá & Hợp tác</h2>
-    <p>Chúng tôi cung cấp bảng giá cạnh tranh và linh hoạt.  
-      Vui lòng gửi yêu cầu báo giá để được tư vấn chi tiết.</p>
-    <a class="button" href="#contact">Gửi yêu cầu</a>
-  </section>
+<section id="about" class="fade-in parallax" style="background-image:url('parallax2.jpg');">
+  <h2>Về Jun Logistics</h2>
+  <p>Jun Logistics đặt mục tiêu cung cấp dịch vụ uy tín, chuyên nghiệp và tận tâm. Đội ngũ giàu kinh nghiệm, hỗ trợ khách hàng tối đa từ vận chuyển đến thủ tục hải quan.</p>
+</section>
 
-  <section id="contact" class="fade-in">
-    <h2>Liên hệ với chúng tôi</h2>
-    <p><b>Địa chỉ:</b> 123 Đường Logistics, Quận 1, TP. Hồ Chí Minh</p>
-    <p><b>Email:</b> contact@junlogistics.com</p>
-    <p><b>Điện thoại:</b> +84 912 345 678</p>
-  </section>
+<section id="contact" class="fade-in parallax" style="background-image:url('parallax3.jpg');">
+  <h2>Liên hệ</h2>
+  <p><i class="fas fa-phone"></i> Hotline: +84 912 345 678</p>
+  <p><i class="fas fa-envelope"></i> Email: contact@junlogistics.com</p>
+  <p><i class="fas fa-clock"></i> Giờ làm việc: T2 - T7, 8AM - 6PM</p>
+  <a class="button" href="mailto:contact@junlogistics.com">Gửi Email</a>
+</section>
 
-  <footer>
-    © 2025 Jun Logistics | All rights reserved
-  </footer>
+<footer>
+  © 2025 Jun Logistics | All rights reserved
+</footer>
 
-  <script>
-    // Hiệu ứng xuất hiện dần khi cuộn
-    const sections = document.querySelectorAll('.fade-in');
-    const options = { threshold: 0.2 };
+<script>
+/* Fade-in khi cuộn */
+const sections = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target);}
+  });
+}, { threshold:0.2 });
+sections.forEach(section => observer.observe(section));
 
-    const observer = new IntersectionObserver(function (entries, observer) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, options);
+/* Slider chính đầu trang */
+const slides = document.querySelector('.slides');
+const slideCount = document.querySelectorAll('.slide').length;
+let index=0;
+function showSlide(i){ slides.style.transform = `translateX(${-i*100}%)`; }
+document.querySelector('header .prev').addEventListener('click', ()=>{ index=(index-1+slideCount)%slideCount; showSlide(index); });
+document.querySelector('header .next').addEventListener('click', ()=>{ index=(index+1)%slideCount; showSlide(index); });
+setInterval(()=>{ index=(index+1)%slideCount; showSlide(index); },5000);
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  </script>
+/* Slider dịch vụ */
+const track = document.querySelector('.services-slider .slider-track');
+const cards = document.querySelectorAll('.services-slider .service-card');
+const prevBtn = document.querySelector('.services-slider .prev');
+const nextBtn = document.querySelector('.services-slider .next');
+let currentIndex=0;
+const visibleCount = Math.floor(document.querySelector('.services-slider').offsetWidth/270);
+function updateSlider(){ track.style.transform = `translateX(-${currentIndex*(cards[0].offsetWidth+20)}px)`; }
+prevBtn.addEventListener('click', ()=>{ currentIndex=Math.max(0,currentIndex-1); updateSlider(); });
+nextBtn.addEventListener('click', ()=>{ currentIndex=Math.min(cards.length-visibleCount,currentIndex+1); updateSlider(); });
+setInterval(()=>{ currentIndex++; if(currentIndex>cards.length-visibleCount) currentIndex=0; updateSlider(); },4000);
+
+/* Fade-in + zoom cho thẻ dịch vụ */
+const hoverCards = document.querySelectorAll('.fade-in-hover');
+const hoverObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+  });
+}, { threshold:0.2 });
+hoverCards.forEach(card => hoverObserver.observe(card));
+
+/* Parallax text overlay */
+const slideTexts = document.querySelectorAll('.slide-text');
+window.addEventListener('scroll',()=>{
+  const scrollY=window.scrollY;
+  slideTexts.forEach(text=>{ text.style.transform=`translateY(${scrollY*0.3}px)`; });
+});
+
+/* Parallax nhẹ cho thẻ dịch vụ */
+window.addEventListener('scroll',()=>{
+  const scrollY=window.scrollY;
+  cards.forEach((card,index)=>{
+    const offset=(scrollY*0.1)+(index*5);
+    card.style.transform=`translateY(${offset}px) scale(1)`; 
+  });
+});
+</script>
 </body>
 </html>
